@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
-    include: ['tests/dist/server/*components.spec.js'],
+    include: ['tests/dist/server/*.spec.js'],
     exclude: [
       '**/node_modules/**',
       '**/cypress/**',
