@@ -1842,6 +1842,9 @@ importers:
       devextreme-metadata:
         specifier: workspace:*
         version: link:../devextreme-metadata
+      domino:
+        specifier: ^2.1.6
+        version: 2.1.6
       eslint:
         specifier: 'catalog:'
         version: 9.18.0(jiti@2.6.1)
@@ -10062,6 +10065,9 @@ packages:
   domhandler@5.0.3:
     resolution: {integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==}
     engines: {node: '>= 4'}
+
+  domino@2.1.6:
+    resolution: {integrity: sha512-3VdM/SXBZX2omc9JF9nOPCtDaYQ67BGp5CoLpIQlO2KCAPETs8TcDHacF26jXadGbvUteZzRTeos2fhID5+ucQ==}
 
   dompurify@3.2.4:
     resolution: {integrity: sha512-ysFSFEDVduQpyhzAob/kkuJjf5zWkZD8/A9ywSp1byueyuCfHamrCBa14/Oc2iiB0e51B+NpxSl5gmzn+Ms/mg==}
@@ -30316,6 +30322,8 @@ snapshots:
   domhandler@5.0.3:
     dependencies:
       domelementtype: 2.3.0
+
+  domino@2.1.6: {}
 
   dompurify@3.2.4:
     optionalDependencies:

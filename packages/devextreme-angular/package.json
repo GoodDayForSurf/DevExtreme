@@ -49,6 +49,7 @@
     "core-js": "2.6.12",
     "css-loader": "6.10.0",
     "devextreme-metadata": "workspace:*",
+    "domino": "^2.1.6",
     "eslint": "catalog:",
     "eslint-config-devextreme": "1.1.5",
     "eslint-plugin-import": "catalog:",

@@ -1,10 +1,13 @@
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  ssr: {
+    noExternal: ['devextreme', 'devextreme-angular'],
+  },
   test: {
     environment: 'node',
     globals: true,
-    include: ['tests/dist/server/*ajax.spec.js'],
+    include: ['tests/dist/server/*components.spec.js'],
     exclude: [
       '**/node_modules/**',
       '**/cypress/**',
