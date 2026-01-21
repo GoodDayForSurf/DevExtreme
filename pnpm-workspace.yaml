@@ -2,6 +2,7 @@ packages:
   - 'apps/*'
   - 'e2e/*'
   - 'packages/*'
+  - 'packages/devextreme-angular/tests/ssr-app'
   - 'packages/devextreme/artifacts/npm/devextreme-dist'
   - '!packages/sbom'
 
@@ -35,6 +36,7 @@ catalogs:
     "@angular-devkit/build-angular": ~19.2.19
     "@angular-devkit/architect": ~0.1902.19
     "@angular-devkit/schematics": ~19.2.19
+    "@angular/build": ~19.2.19
     "@angular/cli": ~19.2.19
     "@angular/common": ~19.2.18
     "@angular/compiler": ~19.2.18
@@ -45,6 +47,7 @@ catalogs:
     "@angular/platform-browser-dynamic": ~19.2.18
     "@angular/platform-server": ~19.2.18
     "@angular/router": ~19.2.18
+    "@angular/ssr": ~19.2.19
     "ng-packagr": ~19.2.2
     "typescript": 5.5.4
     "zone.js": 0.15.1
