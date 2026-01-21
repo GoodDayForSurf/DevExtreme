@@ -3,6 +3,7 @@ packages:
   - 'e2e/*'
   - 'packages/*'
   - 'packages/devextreme-angular/tests/ssr-app'
+  - 'packages/devextreme-angular/tests/ssr-testcafe'
   - 'packages/devextreme/artifacts/npm/devextreme-dist'
   - '!packages/sbom'
 
