@@ -170,17 +170,18 @@ function collectExports(baseDir) {
                 const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
                 const exportEntry = {};
 
-                if (pkg.module) {
-                    exportEntry.import = getPath(pkg.module);
-                }
-                if (pkg.main) {
-                    exportEntry.require = getPath(pkg.main);
-                }
                 if (pkg.typings || pkg.types) {
                     const typesFile = pkg.typings || pkg.types;
                     exportEntry.types = path.join(currentDir, typesFile)
                         .replace(/\\/g, '/')
                         .replace(/^.*\/devextreme\//, './');
+                }
+
+                if (pkg.module) {
+                    exportEntry.import = getPath(pkg.module);
+                }
+                if (pkg.main) {
+                    exportEntry.require = getPath(pkg.main);
                 }
 
                 if (Object.keys(exportEntry).length > 0) {
