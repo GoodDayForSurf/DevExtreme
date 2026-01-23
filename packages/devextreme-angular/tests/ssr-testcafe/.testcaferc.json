@@ -3,6 +3,6 @@
     "chrome:headless --use-fake-ui-for-media-stream --use-fake-device-for-media-stream --enable-features=SpeechRecognition,WebSpeechAPI"
   ],
   "src": [
-    "./ssr-app-markup.test.js"
+    "./ssr-app.test.js"
   ]
 }

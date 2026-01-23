@@ -12,6 +12,11 @@ const indexHtml = join(serverDistFolder, 'index.server.html');
 const app = express();
 const commonEngine = new CommonEngine();
 
+// Chrome DevTools probes this endpoint; avoid SSR router errors.
+app.get('/.well-known/appspecific/com.chrome.devtools.json', (_req, res) => {
+  res.status(204).end();
+});
+
 /**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.

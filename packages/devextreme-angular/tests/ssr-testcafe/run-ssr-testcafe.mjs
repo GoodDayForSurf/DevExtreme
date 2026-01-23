@@ -1,7 +1,9 @@
 import { spawn } from 'node:child_process';
 import http from 'node:http';
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import fs from 'fs/promises';
+import path from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..', '..', '..', '..');
@@ -10,6 +12,22 @@ const testcafeDir = resolve(repoRoot, 'packages/devextreme-angular/tests/ssr-tes
 const testcafeConfig = resolve(__dirname, '.testcaferc.json');
 const port = Number(process.env.SSR_APP_PORT || 4200);
 const baseUrl = `http://localhost:${port}/`;
+
+const addDxComponentsToApp = async () => {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    const componentNamesPath = path.resolve(__dirname, '../dist/server/component-names.js');
+    const { componentNames } = await import(pathToFileURL(componentNamesPath).href);
+
+    const template = (componentNames)
+      .filter((_name) => !['diagram', 'scheduler'].includes(_name))
+      .map((name) => `<dx-${name}></dx-${name}>\n`)
+      .join('');
+
+    const appTemplatePath = path.resolve(__dirname, '../ssr-app/src/app/app.component.html');
+    await fs.writeFile(appTemplatePath, template, 'utf8');
+}
 
 const runCommand = (command, args, options = {}) => new Promise((resolvePromise, rejectPromise) => {
   const child = spawn(command, args, {
@@ -52,11 +70,26 @@ const waitForServer = (url, timeoutMs = 60000) => new Promise((resolvePromise, r
   ping();
 });
 
-const startServer = () => spawn('pnpm', ['--dir', ssrAppDir, 'run', 'start',  '--port', String(port)], {
-  shell: true,
-  stdio: 'inherit',
-  env: process.env,
-});
+const buildSsrApp = () => runCommand(
+  'pnpm',
+  ['--dir', ssrAppDir, 'run', 'build', '--configuration', 'development'],
+  {
+    env: process.env,
+  },
+);
+
+const startServer = () => spawn(
+  'node',
+  [resolve(ssrAppDir, 'dist/ssr-app/server/server.mjs')],
+  {
+    shell: true,
+    stdio: 'inherit',
+    env: {
+      ...process.env,
+      PORT: String(port),
+    },
+  },
+);
 
 let serverProcess;
 
@@ -83,7 +116,11 @@ process.on('SIGTERM', () => {
 });
 
 try {
-  console.log(`Starting ssr-app on ${baseUrl}`);
+  console.log('Add devextreme-components to app');
+  await addDxComponentsToApp();
+  console.log('Building ssr-app for SSR');
+  await buildSsrApp();
+  console.log(`Starting ssr-app SSR server on ${baseUrl}`);
   serverProcess = startServer();
   await waitForServer(baseUrl);
   console.log('ssr-app is ready, starting TestCafe');
@@ -99,6 +136,7 @@ try {
       testcafeConfig,
       '--reporter',
       'spec',
+      '--disable-native-automation',
       '--page-load-timeout',
       '60000',
       '--selector-timeout',
@@ -109,7 +147,6 @@ try {
     {
       env: {
         ...process.env,
-        SSR_APP_URL: baseUrl,
       },
     },
   );
