@@ -82,7 +82,7 @@ const startServer = () => spawn(
   'node',
   [resolve(ssrAppDir, 'dist/ssr-app/server/server.mjs')],
   {
-    shell: true,
+    shell: false,
     stdio: 'inherit',
     env: {
       ...process.env,
@@ -113,6 +113,22 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   shutdownServer();
   process.exit(143);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error(error);
+  shutdownServer();
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (error) => {
+  console.error(error);
+  shutdownServer();
+  process.exit(1);
+});
+
+process.on('exit', () => {
+  shutdownServer();
 });
 
 try {
