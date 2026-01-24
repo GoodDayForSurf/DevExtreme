@@ -8,7 +8,7 @@ import path from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..', '..', '..', '..');
 const ssrAppDir = resolve(repoRoot, 'packages/devextreme-angular/tests/ssr-app');
-const testcafeDir = resolve(repoRoot, 'packages/devextreme-angular/tests/ssr-testcafe');
+const testcafeDir = resolve(repoRoot, 'packages/devextreme-angular/tests/testcafe');
 const testcafeConfig = resolve(__dirname, '.testcaferc.json');
 const port = Number(process.env.SSR_APP_PORT || 4200);
 const baseUrl = `http://localhost:${port}/`;

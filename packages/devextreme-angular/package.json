@@ -16,7 +16,7 @@
     "pack": "pnpm --workspace-root nx pack devextreme-angular",
     "pack-with-descriptions": "pnpm --workspace-root nx pack --configuration with-descriptions devextreme-angular",
     "test:dev": "pnpm --workspace-root nx run:tests devextreme-angular",
-    "test:ssr": "node tests/ssr-testcafe/run-ssr-testcafe.mjs"
+    "test:ssr": "node tests/testcafe/run-ssr-testcafe.mjs"
 
   },
   "author": "Developer Express Inc.",
