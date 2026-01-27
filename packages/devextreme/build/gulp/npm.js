@@ -193,7 +193,6 @@ function collectExports(baseDir) {
             }
         }
 
-        // проход по вложенным папкам
         const entries = fs.readdirSync(currentDir, { withFileTypes: true });
 
         for (const entry of entries) {
