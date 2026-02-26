@@ -18,14 +18,14 @@
     "test:angular19": "node ./runner.js --framework=angular"
   },
   "dependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/compiler": "^19.2.7",
-    "@angular/core": "^19.2.0",
+    "@angular/common": "^19.2.16",
+    "@angular/compiler": "^19.2.18",
+    "@angular/core": "^21.2.0",
     "@angular/forms": "^19.2.0",
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.7",
     "@angular/router": "^19.2.0",
-    "@babel/runtime": "^7.24.0",
+    "@babel/runtime": "^7.28.6",
     "@preact/signals-core": "^1.8.0",
     "devexpress-diagram": "catalog:",
     "devexpress-gantt": "catalog:",
@@ -74,7 +74,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "testcafe": "^3.4.0",
     "typescript": "~5.8.3",
-    "vite": "^6.2.0"
+    "vite": "^5.4.21"
   },
   "main": "index.js",
   "directories": {
