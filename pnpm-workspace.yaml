@@ -43,12 +43,14 @@ overrides:
   "ip-address@<=10.1.0": ">=10.1.1"
   "webpack-dev-server@<=5.2.4": ^5.2.5
   "form-data@<4.0.6": "^4.0.6"
-  "undici@>=7.23.0 <7.28.0": ^7.28.0
+  "undici@>=7.0.0 <7.28.0": ^7.28.0
+  "tar@<=7.5.15": ^7.5.16
+  "@sigstore/core@<=3.2.0": ^3.2.1
   "http-proxy-middleware@>=0.16.0 <3.0.7": ^3.0.7
   "piscina@>=5.0.0-alpha.0 <=5.1.4": ^5.1.5
 
 catalog:
-  axe-core: ^4.11.1
+  axe-core: ^4.11.3
   inferno: ^8.2.3
   inferno-hydrate: ^8.2.3
   inferno-create-element: ^8.2.3
@@ -86,10 +88,10 @@ catalog:
 
 catalogs:
   angular:
-    "@angular-devkit/build-angular": ~20.3.21
-    "@angular-devkit/architect": ~0.2003.21
-    "@angular-devkit/schematics": ~20.3.21
-    "@angular/cli": ~20.3.21
+    "@angular-devkit/build-angular": ~20.3.24
+    "@angular-devkit/architect": ~0.2003.24
+    "@angular-devkit/schematics": ~20.3.24
+    "@angular/cli": ~20.3.24
     "@angular/common": ~20.3.25
     "@angular/compiler": ~20.3.25
     "@angular/compiler-cli": ~20.3.25
@@ -99,8 +101,8 @@ catalogs:
     "@angular/platform-browser-dynamic": ~20.3.25
     "@angular/platform-server": ~20.3.25
     "@angular/router": ~20.3.25
-    "ng-packagr": ~20.3.0
-    "typescript": ~5.8.0
+    "ng-packagr": ~20.3.2
+    "typescript": ~5.8.3
     "zone.js": ~0.15.1
   tools:
     "devextreme-internal-tools": 20.4.0
@@ -145,3 +147,7 @@ minimumReleaseAgeExclude:
   - '@nx/nx-win32-x64-msvc@23.0.1'
   - '@nx/workspace@23.0.1'
   - nx@23.0.1
+  - terser@4.8.1
+  - elliptic@6.6.2
+  - babel-traverse@7.23.2
+  - '@sigstore/core@3.2.1'

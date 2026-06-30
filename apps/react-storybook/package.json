@@ -14,7 +14,7 @@
   "dependencies": {
     "devextreme": "workspace:*",
     "devextreme-react": "workspace:*",
-    "html-react-parser": "^5.2.2",
+    "html-react-parser": "^5.2.17",
     "inferno": "catalog:",
     "openai": "4.73.1"
   },
